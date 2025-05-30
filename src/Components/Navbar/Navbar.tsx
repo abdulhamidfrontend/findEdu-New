@@ -22,9 +22,13 @@ const Navbar = () => {
       <h1 className="font-bold text-3xl">LOGO</h1>
 
       <div className="flex gap-8">
-        <h3>{t("home")}</h3>
+        <Link to={"/"}>
+          <h3>{t("home")}</h3>
+        </Link>
         <h3>{t("about")}</h3>
-        <h3>{t("resources")}</h3>
+        <Link to={"/resources"}>
+          <h3>{t("resources")}</h3>
+        </Link>
         <h3 className="flex gap-2 items-center">
           <FaRegHeart /> {t("favorites")}
         </h3>

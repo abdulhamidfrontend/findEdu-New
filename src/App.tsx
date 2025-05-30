@@ -3,10 +3,12 @@ import "./index.css";
 import Home from "./Pages/Home/Home";
 import Login from "./Pages/Login/Login";
 import Register from "./Pages/Register/Register";
+import OTP from "./Pages/OTP/OTP";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 import type { RootState } from "@/store/store";
+import Resources from "./Pages/Resources/Resources";
 
 function App() {
   const { i18n } = useTranslation();
@@ -22,6 +24,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/otp" element={<OTP />} />
+          <Route path="/resources" element={<Resources />} />
         </Routes>
       </BrowserRouter>
     </div>

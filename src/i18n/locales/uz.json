@@ -20,5 +20,12 @@
   "english": "Ingliz tili",
   "smm": "SMM",
   "design": "Dizayn",
-  "business": "Bizness"
+  "business": "Bizness",
+  "resources-title": "O‘quv resurslarini kashf et",
+  "resources-materials": "Ta'lim dasturlaringizni boyitish uchun yuqori sifatli materiallardan foydalaning",
+  "learning-resources": "O‘quv Resurslari",
+  "search-resources": "Resurslarni qidirish...",
+  "preview": "Oldindan ko`rish",
+  "download": "Yuklab olish",
+  "all-resources": "Barcha resurslar"
 }

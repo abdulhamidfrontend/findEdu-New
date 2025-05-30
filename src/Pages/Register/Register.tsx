@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import { Button } from "../../Components/ui/button";
 import { Input } from "../../Components/ui/input";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import LoginImg from "../../assets/Login.png";
 import LoginImgBottom from "../../assets/LoginImgBottom.png";
 
@@ -25,6 +25,7 @@ export default function CreateAccountForm() {
     password: "",
     role: "USER",
   });
+  const navigate = useNavigate();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -59,15 +60,51 @@ export default function CreateAccountForm() {
       });
 
       const result = await res.json();
+      console.log("Registration response:", result);
 
       if (res.ok) {
-        alert("Ro‘yxatdan o‘tish muvaffaqiyatli!");
-        console.log(result);
+        // After successful registration, send OTP
+        try {
+          console.log("Sending OTP to email:", formData.email);
+          const otpRes = await fetch(
+            "https://findcourse.net.uz/api/users/send-otp",
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                Accept: "*/*",
+              },
+              body: JSON.stringify({
+                email: formData.email,
+                phone: formData.phoneNumber, // Adding phone number as it might be required
+              }),
+            }
+          );
+
+          const otpResult = await otpRes.json();
+          console.log("OTP send response:", otpResult);
+
+          if (otpRes.ok) {
+            // Store email in localStorage for OTP verification
+            localStorage.setItem("userEmail", formData.email);
+            alert("Ro'yxatdan o'tish muvaffaqiyatli! OTP kodini tekshiring.");
+            navigate("/otp"); // Redirect to OTP verification page
+          } else {
+            alert(otpResult.message || "OTP yuborishda xatolik yuz berdi");
+            console.error("OTP send error:", otpResult);
+          }
+        } catch (otpErr) {
+          console.error("OTP send error:", otpErr);
+          alert(
+            "OTP yuborishda xatolik yuz berdi. Iltimos, qaytadan urinib ko'ring."
+          );
+        }
       } else {
         alert(result.message || "Xatolik yuz berdi");
+        console.error("Registration error:", result);
       }
     } catch (err) {
-      console.error(err);
+      console.error("Registration error:", err);
       alert("Tarmoq xatosi yoki server bilan aloqa yo'q");
     }
   };

@@ -54,17 +54,17 @@ const HomeBody = () => {
         </form>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-20">
         {filteredCenters.map((center) => (
           <div
             key={center.id}
-            className="border  hover:scale-105 rounded-xl duration-300 hover:shadow  transition"
+            className="border  hover:scale-103 rounded-xl duration-300 hover:shadow  transition"
           >
             <div className="w-full flex items-center justify-center rounded-lg h-[220px] ">
               <img
                 src={studycenterimg}
                 alt="center image"
-                className="rounded-xl rounded-tl-xl rounded-br-[0] rounded-tr-xl w-full h-full rounded-bl-none"
+                className="rounded-xl rounded-tl-xl rounded-br-[0] rounded-tr-xl rounded-bl-none  w-full h-full"
               />
             </div>
             <div className="p-4 flex  flex-col gap-2">

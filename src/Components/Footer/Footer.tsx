@@ -1,10 +1,14 @@
 import { useTranslation } from "react-i18next";
+import { FaFacebookF } from "react-icons/fa";
+import { FaInstagram } from "react-icons/fa";
+import { RiTelegram2Line } from "react-icons/ri";
+import { FaYoutube } from "react-icons/fa";
 
 const Footer = () => {
   const { t } = useTranslation();
   return (
     <div className="bg-blue-950 w-full">
-      <div className="max-w-[90%] m-auto">
+      <div className="max-w-[90%] m-auto py-10">
         <h1 className="text-white text-4xl font-bold pt-7 ">LOGO</h1>
         <div className="flex items-center p-10 gap-20  text-white">
           <div className="links flex items-center gap-25">
@@ -62,11 +66,24 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <div>
+        <div className="flex items-center justify-between">
           <h3 className="text-white opacity-50 text-[14px]">
             © 2025 Findedu. All Rights Reserved. Best Girls
           </h3>
-          <div className="icons"></div>
+          <div className="icons flex items-center gap-5">
+            <button className="cursor-pointer">
+              <FaFacebookF className="text-white text-2xl" />
+            </button>
+            <button className="cursor-pointer">
+              <FaInstagram className="text-white text-2xl" />
+            </button>
+            <button className="cursor-pointer">
+              <RiTelegram2Line className="text-white text-2xl" />
+            </button>
+            <button className="cursor-pointer">
+              <FaYoutube className="text-white text-2xl" />
+            </button>
+          </div>
         </div>
       </div>
     </div>
