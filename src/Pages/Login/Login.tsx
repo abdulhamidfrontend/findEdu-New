@@ -3,6 +3,17 @@ import { Link, useNavigate } from "react-router-dom";
 import LoginImg from "../../assets/Login.png";
 import LoginImgBottom from "../../assets/LoginImgBottom.png";
 
+// ✅ User tipi
+type User = {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  password: string;
+  role: string;
+  image: string;
+};
+
 const Login = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -28,17 +39,41 @@ const Login = () => {
 
       const data = await res.json();
 
-      if (res.ok) {
-        setSuccess("Login successful!");
-        console.log("Token:", data.accessToken);
-        localStorage.setItem("token", data.accessToken);
-        localStorage.setItem("refreshToken", data.refreshToken);
-
-        navigate("/");
-      } else {
+      if (!res.ok) {
         setError(data.message || "Login failed.");
+        return;
       }
+
+      const accessToken = data.accessToken;
+      const refreshToken = data.refreshToken;
+
+      localStorage.setItem("token", accessToken);
+      localStorage.setItem("refreshToken", refreshToken);
+
+      // 👇 Foydalanuvchi ma'lumotlarini olish (mydata)
+      const userRes = await fetch(
+        "https://findcourse.net.uz/api/users/mydata",
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        }
+      );
+
+      const userData = await userRes.json();
+
+      if (!userRes.ok) {
+        console.error("Failed to fetch user data:", userData.message);
+        setError("Failed to fetch user info.");
+        return;
+      }
+
+      localStorage.setItem("user", JSON.stringify(userData.data));
+      setSuccess("Login successful!");
+      navigate("/");
     } catch (err) {
+      console.error("Login error:", err);
       setError("Server error.");
     } finally {
       setLoading(false);

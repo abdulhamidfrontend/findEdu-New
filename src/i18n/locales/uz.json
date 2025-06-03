@@ -27,5 +27,17 @@
   "search-resources": "Resurslarni qidirish...",
   "preview": "Oldindan ko`rish",
   "download": "Yuklab olish",
-  "all-resources": "Barcha resurslar"
+  "all-resources": "Barcha resurslar",
+  "name": "Ism",
+  "surname": "Familiya",
+  "email": "Email",
+  "phone": "Telefon",
+  "role": "Rol",
+  "my_profile": "Mening profilim",
+  "back_home": "Bosh sahifaga qaytish",
+  "loading": "Yuklanmoqda...",
+  "delete_account": "Akkauntni O`chirish",
+  "edit_account": "Profilni tahrirlash",
+  "save": "Saqlash",
+  "Abouthero-title": "Eng yaxshi ta'lim markazlarini topishda yordam beramiz!"
 }

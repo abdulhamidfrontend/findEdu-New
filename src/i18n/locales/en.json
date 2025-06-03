@@ -27,5 +27,17 @@
   "search-resources": "Search resources...",
   "preview": "Preview",
   "download": "Download",
-  "all-resources": "All resources"
+  "all-resources": "All resources",
+  "name": "First Name",
+  "surname": "Last Name",
+  "email": "Email",
+  "phone": "Phone",
+  "role": "Role",
+  "my_profile": "My profile",
+  "back_home": "Back to Home Page",
+  "loading": "Loading...",
+  "delete_account": "Delete Account",
+  "edit_account": "Edit Profile",
+  "save": "Save",
+  "Abouthero-title": "We help you find the best educational centers!"
 }

@@ -41,7 +41,6 @@ const Body = () => {
 
   return (
     <div className="px-4 mt-20">
-      {/* SEARCH */}
       <form className="border rounded-[6px] p-2.5 flex items-center gap-2 mb-10">
         <IoSearchOutline className="text-[22px]" />
         <input
@@ -53,7 +52,6 @@ const Body = () => {
         />
       </form>
 
-      {/* FILTER BUTTONS */}
       <h1 className="text-lg font-semibold mb-4">{t("filter-by-category")}</h1>
       <div className="flex items-center gap-3 my-5 flex-wrap">
         {/* All resources button */}
@@ -67,7 +65,6 @@ const Body = () => {
           <h3 className="text-center mt-3 text-[14px]">{t("all-resources")}</h3>
         </div>
 
-        {/* Individual category buttons */}
         <div
           onClick={() => setSelectedCategoryName("For students")}
           className="border w-40 h-40 rounded-xl shadow-md hover:shadow-lg transition duration-300 cursor-pointer"
