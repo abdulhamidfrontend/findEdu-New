@@ -35,7 +35,6 @@ const OTP = () => {
       console.log("OTP verification response:", data);
 
       if (res.ok) {
-        // Store tokens if they are returned
         if (data.accessToken) {
           localStorage.setItem("token", data.accessToken);
           localStorage.setItem("refreshToken", data.refreshToken);

@@ -11,6 +11,7 @@ import type { RootState } from "@/store/store";
 import Resources from "./Pages/Resources/Resources";
 import Profile from "./Pages/Profile/Profile";
 import About from "./Pages/About/About";
+import DynamicCenter from "@/Pages/DynamicCenter/DynamicCenter";
 
 function App() {
   const { i18n } = useTranslation();
@@ -30,6 +31,7 @@ function App() {
           <Route path="/resources" element={<Resources />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/about" element={<About />} />
+          <Route path="/center/:id" element={<DynamicCenter />} />
         </Routes>
       </BrowserRouter>
     </div>

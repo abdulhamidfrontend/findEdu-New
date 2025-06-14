@@ -2,12 +2,13 @@ import { IoSearch } from "react-icons/io5";
 import { useTranslation } from "react-i18next";
 import { useEffect, useState } from "react";
 import { FaPhone } from "react-icons/fa6";
-import studycenterimg from "../../assets/studycenter.png";
+import { useNavigate } from "react-router-dom";
 
 const HomeBody = () => {
   const { t } = useTranslation();
   const [centers, setCenters] = useState<any[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchCenters = async () => {
@@ -58,19 +59,19 @@ const HomeBody = () => {
         {filteredCenters.map((center) => (
           <div
             key={center.id}
-            className="border  hover:scale-103 rounded-xl duration-300 hover:shadow  transition"
+            className="border hover:scale-103 rounded-xl duration-300 hover:shadow transition cursor-pointer"
+            onClick={() => navigate(`/center/${center.id}`)}
           >
             <div className="w-full flex items-center justify-center rounded-lg h-[220px] ">
               <img
-                src={studycenterimg}
-                alt="center image"
+                src={`https://findcourse.net.uz/api/image/${center.image}`}
+                alt={center.name}
                 className="rounded-xl rounded-tl-xl rounded-br-[0] rounded-tr-xl rounded-bl-none  w-full h-full"
               />
             </div>
-            <div className="p-4 flex  flex-col gap-2">
+            <div className="p-4 flex flex-col gap-2">
               <h2 className="text-xl font-semibold">{center.name}</h2>
               <h2 className="text-[14px] text-gray-600">{center.address}</h2>
-
               <p className="text-[14px] flex items-center gap-2 text-gray-600">
                 <FaPhone /> {center.phone}
               </p>

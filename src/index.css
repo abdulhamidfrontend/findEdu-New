@@ -118,3 +118,11 @@
     @apply bg-background text-foreground;
   }
 }
+
+.btn {
+  background-color: rgb(5, 5, 66);
+  border-radius: 30px;
+  color: white;
+  padding: 15px 35px;
+  width: fit-content;
+}

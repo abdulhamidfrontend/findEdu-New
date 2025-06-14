@@ -63,7 +63,6 @@ export default function CreateAccountForm() {
       console.log("Registration response:", result);
 
       if (res.ok) {
-        // After successful registration, send OTP
         try {
           console.log("Sending OTP to email:", formData.email);
           const otpRes = await fetch(
@@ -76,7 +75,7 @@ export default function CreateAccountForm() {
               },
               body: JSON.stringify({
                 email: formData.email,
-                phone: formData.phoneNumber, // Adding phone number as it might be required
+                phone: formData.phoneNumber,
               }),
             }
           );
@@ -85,10 +84,9 @@ export default function CreateAccountForm() {
           console.log("OTP send response:", otpResult);
 
           if (otpRes.ok) {
-            // Store email in localStorage for OTP verification
             localStorage.setItem("userEmail", formData.email);
             alert("Ro'yxatdan o'tish muvaffaqiyatli! OTP kodini tekshiring.");
-            navigate("/otp"); // Redirect to OTP verification page
+            navigate("/otp");
           } else {
             alert(otpResult.message || "OTP yuborishda xatolik yuz berdi");
             console.error("OTP send error:", otpResult);
