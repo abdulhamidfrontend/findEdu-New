@@ -13,6 +13,25 @@ import { AiOutlineUser } from "react-icons/ai";
 import { CiCalendar } from "react-icons/ci";
 import { Rate } from "antd";
 import { FaRegHeart } from "react-icons/fa";
+import ReceptionModal from "./Modal/Modal";
+
+interface Region {
+  id: number;
+  name: string;
+}
+
+interface Filial {
+  id: number;
+  name: string;
+  phone: string;
+  regionId: number;
+  centerId: number;
+  address: string;
+  image: string;
+  createdAt: string;
+  updatedAt: string;
+  region: Region;
+}
 
 interface User {
   id: number;
@@ -51,24 +70,6 @@ interface Comment {
   user: CommentUser;
 }
 
-interface Region {
-  id: number;
-  name: string;
-}
-
-interface Filial {
-  id: number;
-  name: string;
-  phone: string;
-  regionId: number;
-  centerId: number;
-  address: string;
-  image: string;
-  createdAt: string;
-  updatedAt: string;
-  region: Region;
-}
-
 interface Center {
   id: number;
   name: string;
@@ -85,6 +86,7 @@ const DynamicCenter = () => {
   const [center, setCenter] = useState<Center | null>(null);
   const [commentText, setCommentText] = useState("");
   const [rating, setRating] = useState(0);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleSubmitComment = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -119,7 +121,7 @@ const DynamicCenter = () => {
         setCenter(updatedData.data);
       } else {
         const errorData = await response.json();
-        console.error("Sharh qo‘shishda xatolik:", errorData);
+        console.error("Sharh qo'shishda xatolik:", errorData);
       }
     } catch (error) {
       console.error("Xatolik:", error);
@@ -132,6 +134,8 @@ const DynamicCenter = () => {
         const res = await fetch(`https://findcourse.net.uz/api/centers/${id}`);
         const data = await res.json();
         setCenter(data.data);
+        console.log("LocalStorage User ID:", localStorage.getItem("userId"));
+        console.log("Token:", localStorage.getItem("token"));
       } catch (error) {
         console.error("Xatolik:", error);
       }
@@ -163,10 +167,10 @@ const DynamicCenter = () => {
         {center ? (
           <div className="bg-white shadow flex items-start rounded-lg">
             <div className="left relative ">
-              <button className="shadow-xl right-3 hover:scale-110 transition duration-300 active:scale-100 top-3 absolute flex items-center justify-center p-3  rounded-full">
+              <button className="shadow-xl bg-white right-3 hover:scale-110 transition duration-300 active:scale-100 top-3 absolute flex items-center justify-center p-3  rounded-full">
                 <FaRegHeart className="text-red-500 text-2xl" />
               </button>
-              <div className="w-[550px] flex items-center justify-center  h-fit ">
+              <div className="w-[550px] border-b flex items-center justify-center  h-fit ">
                 <img
                   src={`https://findcourse.net.uz/api/image/${center.image}`}
                   alt={center.name}
@@ -184,15 +188,16 @@ const DynamicCenter = () => {
                       <p>Filiallar mavjud emas</p>
                     ) : (
                       center.filials.map((filial) => (
-                        <div
-                          key={filial.id}
-                          className="text-[16px] font-medium"
-                        >
-                          {filial.name}
-                          <h2 className="text-gray-500 text-[14px] font-normal">
-                            {filial.address}
-                          </h2>
-                        </div>
+                        <Link to={`/branches/${filial.id}`} key={filial.id}>
+                          <div className="cursor-pointer hover:bg-violet-200 p-2 rounded-[8px]">
+                            <div className="text-[16px] font-medium">
+                              {filial.name}
+                            </div>
+                            <div className="text-gray-500 text-[14px] font-normal">
+                              {filial.address}
+                            </div>
+                          </div>
+                        </Link>
                       ))
                     )}
                   </div>
@@ -209,7 +214,10 @@ const DynamicCenter = () => {
                     </div>
                     <h1 className="font-medium text-xl">optional</h1>
                   </div>
-                  <button className="w-fit flex items-center gap-2 bg-blue-950 hover:bg-blue-900 text-white px-5 py-3 transition duration-200 rounded-[8px]">
+                  <button
+                    className="w-fit flex items-center gap-2 bg-blue-950 hover:bg-blue-900 text-white px-5 py-3 transition duration-200 rounded-[8px]"
+                    onClick={() => setIsModalOpen(true)}
+                  >
                     <LuClock4 />
                     Darsga yozilish
                   </button>
@@ -254,7 +262,7 @@ const DynamicCenter = () => {
                     onChange={(e) => setCommentText(e.target.value)}
                   ></textarea>
                   <div className="flex items-center gap-2">
-                    <p>Reyting:</p>
+                    <p>Baholash:</p>
                     <Rate
                       value={rating}
                       onChange={(value) => setRating(value)}
@@ -277,16 +285,21 @@ const DynamicCenter = () => {
                     center.comments.map((comment) => (
                       <div
                         key={comment.id}
-                        className="p-4  rounded-xl bg-gray-50 "
+                        className="p-4 rounded-xl bg-gray-50"
                       >
                         <div className="flex items-center gap-2 mb-2">
                           <h3 className="text-gray-400">
                             <AiOutlineUser />
                           </h3>
+
                           <div className="flex items-center justify-between w-full">
-                            <h4 className="font-semibold">
-                              {comment.user.firstName} {comment.user.lastName}
-                            </h4>
+                            <div className="flex items-center gap-2">
+                              <h4 className="font-semibold">
+                                {comment.user.firstName} {comment.user.lastName}
+                              </h4>
+                              <Rate disabled defaultValue={comment.star} />
+                            </div>
+
                             <h3 className="flex items-center text-gray-600 gap-2">
                               <CiCalendar className="text-xl" />
                               {new Date(
@@ -295,7 +308,9 @@ const DynamicCenter = () => {
                             </h3>
                           </div>
                         </div>
-                        <p>{comment.text}</p>
+                        <div>
+                          <p>{comment.text}</p>
+                        </div>
                       </div>
                     ))
                   )}
@@ -309,6 +324,11 @@ const DynamicCenter = () => {
       </div>
 
       <Footer />
+      <ReceptionModal
+        isModalOpen={isModalOpen}
+        setIsModalOpen={setIsModalOpen}
+        center={center}
+      />
     </div>
   );
 };

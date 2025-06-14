@@ -12,6 +12,7 @@ import Resources from "./Pages/Resources/Resources";
 import Profile from "./Pages/Profile/Profile";
 import About from "./Pages/About/About";
 import DynamicCenter from "@/Pages/DynamicCenter/DynamicCenter";
+import Branches from "./Pages/Branches/Branches";
 
 function App() {
   const { i18n } = useTranslation();
@@ -32,6 +33,7 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/about" element={<About />} />
           <Route path="/center/:id" element={<DynamicCenter />} />
+          <Route path="/branches/:id" element={<Branches />} />
         </Routes>
       </BrowserRouter>
     </div>
