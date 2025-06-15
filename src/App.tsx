@@ -13,6 +13,9 @@ import Profile from "./Pages/Profile/Profile";
 import About from "./Pages/About/About";
 import DynamicCenter from "@/Pages/DynamicCenter/DynamicCenter";
 import Branches from "./Pages/Branches/Branches";
+import Favourites from "./Pages/Favourites/Favourites";
+import Ceo from "./Pages/Ceo/Ceo";
+import MyCenters from "./Pages/My-centers/MyCenters";
 
 function App() {
   const { i18n } = useTranslation();
@@ -34,6 +37,9 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/center/:id" element={<DynamicCenter />} />
           <Route path="/branches/:id" element={<Branches />} />
+          <Route path="/favourites" element={<Favourites />} />
+          <Route path="/ceo" element={<Ceo />} />
+          <Route path="/my-centers" element={<MyCenters />} />
         </Routes>
       </BrowserRouter>
     </div>

@@ -184,12 +184,12 @@ const DynamicCenter = () => {
                   </h1>
 
                   <div className="w-[500px] rounded-[8px] bg-violet-100 border-violet-400 border p-3 flex flex-col gap-2">
-                    {center.filials.length === 0 ? (
+                    {center.filials.length == 0 ? (
                       <p>Filiallar mavjud emas</p>
                     ) : (
                       center.filials.map((filial) => (
                         <Link to={`/branches/${filial.id}`} key={filial.id}>
-                          <div className="cursor-pointer hover:bg-violet-200 p-2 rounded-[8px]">
+                          <div className="cursor-pointer  p-2 rounded-[8px]">
                             <div className="text-[16px] font-medium">
                               {filial.name}
                             </div>
@@ -319,7 +319,7 @@ const DynamicCenter = () => {
             </div>
           </div>
         ) : (
-          <p>Yuklanmoqda...</p>
+          <div className="w-full h-200 bg-white rounded-xl shadow"></div>
         )}
       </div>
 

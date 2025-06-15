@@ -39,5 +39,9 @@
   "delete_account": "Akkauntni O`chirish",
   "edit_account": "Profilni tahrirlash",
   "save": "Saqlash",
-  "Abouthero-title": "Eng yaxshi ta'lim markazlarini topishda yordam beramiz!"
+  "Abouthero-title": "Eng yaxshi ta'lim markazlarini topishda yordam beramiz!",
+  "Appointment": "Navbatlar",
+  "my_centers": "Mening Markazlarim",
+  "create_center": "Markaz Yaratish",
+  "ceo_dashboard": "Ceo Boshqaruv Paneli"
 }

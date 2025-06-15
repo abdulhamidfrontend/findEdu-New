@@ -39,5 +39,9 @@
   "delete_account": "Delete Account",
   "edit_account": "Edit Profile",
   "save": "Save",
-  "Abouthero-title": "We help you find the best educational centers!"
+  "Abouthero-title": "We help you find the best educational centers!",
+  "Appointment": "Appointment",
+  "my_centers": "My Centers",
+  "create_center": "Create Center",
+  "ceo_dashboard": "Ceo Dashboard"
 }
