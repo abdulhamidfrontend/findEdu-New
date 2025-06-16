@@ -223,7 +223,9 @@ const CeoBody: React.FC = () => {
               Markaz qo'shish
             </button>
           </form>
-          <AddBranch />
+          <div className="my-15">
+            <AddBranch />
+          </div>
         </div>
       </div>
     </div>

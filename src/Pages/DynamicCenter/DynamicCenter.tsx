@@ -134,8 +134,6 @@ const DynamicCenter = () => {
         const res = await fetch(`https://findcourse.net.uz/api/centers/${id}`);
         const data = await res.json();
         setCenter(data.data);
-        console.log("LocalStorage User ID:", localStorage.getItem("userId"));
-        console.log("Token:", localStorage.getItem("token"));
       } catch (error) {
         console.error("Xatolik:", error);
       }
@@ -279,10 +277,10 @@ const DynamicCenter = () => {
                 </form>
 
                 <div className="mt-5 flex flex-col gap-3">
-                  {center.comments.length == 0 ? (
+                  {center.comments.length === 0 ? (
                     <p>Hozircha sharhlar mavjud emas.</p>
                   ) : (
-                    center.comments.map((comment) => (
+                    center.comments.map((comment: Comment) => (
                       <div
                         key={comment.id}
                         className="p-4 rounded-xl bg-gray-50"
@@ -308,6 +306,7 @@ const DynamicCenter = () => {
                             </h3>
                           </div>
                         </div>
+
                         <div>
                           <p>{comment.text}</p>
                         </div>

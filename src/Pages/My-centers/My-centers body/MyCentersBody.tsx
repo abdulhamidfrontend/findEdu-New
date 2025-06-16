@@ -5,6 +5,7 @@ import { IoCallOutline } from "react-icons/io5";
 import { FaHeart, FaRegHeart, FaTrash } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { MdOutlineModeEdit } from "react-icons/md";
 
 interface Center {
   id: number;
@@ -123,7 +124,7 @@ const MyCentersBody: React.FC = () => {
                 </div>
 
                 <button
-                  className="absolute top-5 right-16 hover:scale-110 active:scale-100 transition duration-300 bg-white p-3 rounded-full z-10"
+                  className="absolute top-5 right-28 hover:scale-110 active:scale-100 transition duration-300 bg-white p-3 rounded-full z-10"
                   onClick={(e) => {
                     e.stopPropagation();
                     isLiked ? handleUnlike(center.id) : handleLike(center.id);
@@ -134,6 +135,16 @@ const MyCentersBody: React.FC = () => {
                   ) : (
                     <FaRegHeart className="text-red-500" />
                   )}
+                </button>
+
+                <button
+                  className="absolute top-5 right-16 hover:scale-110 active:scale-100 transition duration-300 bg-white p-3 rounded-full z-10"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    navigate(`/ceo/edit/${center.id}`);
+                  }}
+                >
+                  <MdOutlineModeEdit className="text-red-500" />
                 </button>
 
                 <button

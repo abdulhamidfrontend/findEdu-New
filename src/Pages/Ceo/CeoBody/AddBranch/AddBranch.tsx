@@ -271,9 +271,6 @@ const AddBranch: React.FC = () => {
         >
           Branch qo'shish
         </button>
-        <div>
-          <h1>Sizning filiallariz</h1>
-        </div>
       </form>
     </div>
   );

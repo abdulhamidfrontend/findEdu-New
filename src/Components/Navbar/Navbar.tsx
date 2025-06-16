@@ -78,16 +78,15 @@ const Navbar = () => {
             <FaRegHeart /> {t("favorites")}
           </h3>
         </Link>
+        <Link to={"/appointment"}>
+          <h3 className="flex items-center gap-2">
+            <FaRegCalendar />
+            {t("Appointment")}
+          </h3>
+        </Link>
 
         {user?.role === "CEO" && (
           <>
-            <Link to={"/appointment"}>
-              <h3 className="flex items-center gap-2">
-                <FaRegCalendar />
-                {t("Appointment")}
-              </h3>
-            </Link>
-
             <div className="relative" ref={panelRef}>
               <button
                 onClick={() => setPanelOpen((prev) => !prev)}

@@ -16,6 +16,8 @@ import Branches from "./Pages/Branches/Branches";
 import Favourites from "./Pages/Favourites/Favourites";
 import Ceo from "./Pages/Ceo/Ceo";
 import MyCenters from "./Pages/My-centers/MyCenters";
+import Appointment from "./Pages/Appointment/Appointment";
+import CeoEdit from "@/Pages/Ceo/CeoEdit/Edit";
 
 function App() {
   const { i18n } = useTranslation();
@@ -40,6 +42,8 @@ function App() {
           <Route path="/favourites" element={<Favourites />} />
           <Route path="/ceo" element={<Ceo />} />
           <Route path="/my-centers" element={<MyCenters />} />
+          <Route path="/appointment" element={<Appointment />} />
+          <Route path="/ceo/edit/:id" element={<CeoEdit />} />
         </Routes>
       </BrowserRouter>
     </div>
