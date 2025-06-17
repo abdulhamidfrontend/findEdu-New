@@ -39,7 +39,7 @@ const Profile = () => {
 
         if (!res.ok) {
           if (res.status === 401 || res.status === 404) {
-            localStorage.removeItem("token"); // ❗tokenni o‘chirish
+            localStorage.removeItem("token");
             navigate("/login");
           } else {
             setError(result.message || "Xatolik yuz berdi.");
@@ -142,7 +142,6 @@ const Profile = () => {
 
   return (
     <div className="w-full">
-      {/* Navbar */}
       <div className="fixed top-0 left-0 w-full z-50 bg-white shadow">
         <div className="max-w-[95%] mx-auto">
           <Navbar />

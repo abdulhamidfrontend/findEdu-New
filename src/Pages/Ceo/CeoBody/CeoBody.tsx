@@ -19,6 +19,7 @@ interface Region {
 interface Center {
   id: number;
   name: string;
+  address: string;
 }
 
 const CeoBody: React.FC = () => {
@@ -227,6 +228,20 @@ const CeoBody: React.FC = () => {
             <AddBranch />
           </div>
         </div>
+      </div>
+      <div className="mt-5">
+        <h3 className="text-lg font-semibold mb-2">Sizning markazlaringiz:</h3>
+        {myCenters.length === 0 ? (
+          <p>Markazlar mavjud emas</p>
+        ) : (
+          <div className="border p-5 rounded-xl space-y-2">
+            {myCenters.map((center) => (
+              <div key={center.id} className="">
+                {center.name} - {center.address}
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

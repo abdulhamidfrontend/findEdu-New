@@ -3,17 +3,6 @@ import { Link, useNavigate } from "react-router-dom";
 import LoginImg from "../../assets/Login.png";
 import LoginImgBottom from "../../assets/LoginImgBottom.png";
 
-// ✅ User tipi
-type User = {
-  firstName: string;
-  lastName: string;
-  email: string;
-  phone: string;
-  password: string;
-  role: string;
-  image: string;
-};
-
 const Login = () => {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -50,7 +39,6 @@ const Login = () => {
       localStorage.setItem("token", accessToken);
       localStorage.setItem("refreshToken", refreshToken);
 
-      // 👇 Foydalanuvchi ma'lumotlarini olish (mydata)
       const userRes = await fetch(
         "https://findcourse.net.uz/api/users/mydata",
         {

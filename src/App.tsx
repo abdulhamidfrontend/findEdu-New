@@ -3,7 +3,7 @@ import "./index.css";
 import Home from "./Pages/Home/Home";
 import Login from "./Pages/Login/Login";
 import Register from "./Pages/Register/Register";
-import OTP from "./Pages/OTP/OTP";
+import OTP from "./Pages/Auth/OTP/OTP";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
@@ -34,6 +34,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/otp" element={<OTP />} />
+
           <Route path="/resources" element={<Resources />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/about" element={<About />} />
@@ -41,6 +42,7 @@ function App() {
           <Route path="/branches/:id" element={<Branches />} />
           <Route path="/favourites" element={<Favourites />} />
           <Route path="/ceo" element={<Ceo />} />
+
           <Route path="/my-centers" element={<MyCenters />} />
           <Route path="/appointment" element={<Appointment />} />
           <Route path="/ceo/edit/:id" element={<CeoEdit />} />

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Modal, Select, DatePicker, TimePicker, message } from "antd";
-import { Dayjs } from "dayjs";
 
 interface Region {
   id: number;
@@ -150,7 +149,7 @@ const ReceptionModal: React.FC<Props> = ({
             <DatePicker
               className="w-full rounded-lg"
               format="YYYY-MM-DD"
-              onChange={(date, dateString) => {
+              onChange={(dateString) => {
                 if (typeof dateString === "string") setSelectedDate(dateString);
               }}
               value={
@@ -164,7 +163,7 @@ const ReceptionModal: React.FC<Props> = ({
             <TimePicker
               className="w-full rounded-lg"
               format="HH:mm"
-              onChange={(time, timeString) => {
+              onChange={(timeString) => {
                 if (typeof timeString === "string") setSelectedTime(timeString);
               }}
               value={

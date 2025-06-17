@@ -38,7 +38,7 @@ interface Reception {
 
 const AppointmentBody = () => {
   const [receptions, setReceptions] = useState<Reception[]>([]);
-  const [deleteId, setDeleteId] = useState<number | null>(null); // delete qilish uchun id saqlaymiz
+  const [deleteId, setDeleteId] = useState<number | null>(null);
   const navigate = useNavigate();
 
   useEffect(() => {
